@@ -8,7 +8,7 @@ import (
 
 type Storage map[string]*student.Student
 
-// NewStorage - creates and returns *Storage
+// NewStorage - creates and returns Storage
 func NewStorage() Storage {
 	return make(Storage)
 }
