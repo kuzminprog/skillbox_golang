@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"os"
 	"os/signal"
 	"time"
@@ -46,7 +47,7 @@ func calcSquare(in chan int) chan int {
 }
 
 // startNumberGenerator - Infinitely circularly generate
-// natural numbers from 1 to maxInt.
+// natural numbers from 1.
 // Generate at time intervals of half a second
 // Send the generated number to the "out" channel
 func startNumberGenerator(out chan int) {
@@ -55,6 +56,10 @@ func startNumberGenerator(out chan int) {
 	for {
 		time.Sleep(time.Second / 2)
 		out <- num
+
+		if num == math.MaxInt {
+			num = 0
+		}
 		num++
 	}
 }
