@@ -39,12 +39,12 @@ func calcSquare(num int, wg *sync.WaitGroup) chan int {
 	outChan := make(chan int)
 
 	go func() {
+		defer close(outChan)
+		defer wg.Done()
+
 		square := num * num
 		outChan <- square
 		fmt.Println("Квадрат:", square)
-
-		close(outChan)
-		wg.Done()
 	}()
 
 	return outChan
@@ -56,9 +56,10 @@ func calcSquare(num int, wg *sync.WaitGroup) chan int {
 func doubleNumber(inChan chan int, wg *sync.WaitGroup) {
 
 	go func() {
+		defer wg.Done()
+
 		result := <-inChan
 		result *= 2
 		fmt.Println("Произведение:", result)
-		wg.Done()
 	}()
 }
