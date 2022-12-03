@@ -7,10 +7,10 @@ import (
 
 type User interface {
 	CreateUser(user user_app.RequestCreate) (string, error)
-	MakeFriends(sourceId string, targetId string) (string, error)
+	MakeFriends(sourceId, targetId string) (string, error)
 	DeleteUser(id string) (string, error)
 	GetFriends(id string) ([]string, error)
-	UpdateAge(id string, age string) (string, error)
+	UpdateAge(id, age string) (string, error)
 }
 
 type Service struct {
@@ -19,6 +19,6 @@ type Service struct {
 
 func NewService(repos *repository.Repository) *Service {
 	return &Service{
-		User: NewUserService(repos.UserList),
+		User: NewUserService(repos.User),
 	}
 }

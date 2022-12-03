@@ -15,6 +15,6 @@ type RequestDeleteUser struct {
 	TargetID string `json:"target_id"`
 }
 
-type RequestUserId struct {
+type RequestAge struct {
 	NewAge string `json:"new age"`
 }
