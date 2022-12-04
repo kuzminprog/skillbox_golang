@@ -22,6 +22,8 @@ func NewRepository(db *DataBase) *Repository {
 	}
 }
 
+// sliceToMap converts data from a slice into a map.
+// Returns the map
 func sliceToMap(slice []string) (map[string]bool, error) {
 	dict := make(map[string]bool, len(slice))
 
@@ -32,6 +34,8 @@ func sliceToMap(slice []string) (map[string]bool, error) {
 	return dict, nil
 }
 
+// mapToSlice converts data from the map into a slice.
+// Returns a slice
 func mapToSlice(dict map[string]bool) ([]string, error) {
 	var slice []string
 
