@@ -1,0 +1,5 @@
+proxy:
+  apps:
+    '0': http://localhost:8080
+    '1': http://localhost:8082
+    '2': http://localhost:8086
